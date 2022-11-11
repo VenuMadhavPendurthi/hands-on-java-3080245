@@ -20,4 +20,8 @@ public class DataSource {
    return connection;
 
   }
+  public static void main(String[] args)
+  {
+    connect();
+  }
 }
