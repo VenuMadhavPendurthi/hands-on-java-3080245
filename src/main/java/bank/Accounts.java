@@ -1,18 +1,19 @@
 package bank;
 
-public class Accounts
-{
+import bank.*;
+import bank.exceptions.AmountException;
+
+public class Accounts {
   private int Id;
   private String type;
   private double balance;
 
-public Accounts(int Id,String type,double balance)
-{
-  setId(Id);
-  setType(type);
-  setBalance(balance);
+  public Accounts(int Id, String type, double balance) {
+    setId(Id);
+    setType(type);
+    setBalance(balance);
 
-}
+  }
 
   public int getId() {
     return this.Id;
@@ -36,6 +37,23 @@ public Accounts(int Id,String type,double balance)
 
   public void setBalance(double balance) {
     this.balance = balance;
-  
+
+  }
+
+  public void deposite(double amount) throws AmountException {
+    if (amount < 1) {
+      throw new AmountException("The minimum deposit is 1.00");
+    } else {
+      double newBalance = balance + amount;
+      setBalance(newBalance);
+    }
+
+  }
+
+  public void withdraw(double amount) {
+    double newBalance = balance - amount;
+    setBalance(newBalance);
+
+
   }
 }
